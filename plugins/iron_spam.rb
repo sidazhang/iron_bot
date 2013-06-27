@@ -1,6 +1,5 @@
 # Where should we go to lunch today?
-require 'HTTParty'
-require File.expand_path('../../bot_mailer/bot_mailer', __FILE__)
+require 'action_mailer'
 
 class Robut::Plugin::IronSpam
   include Robut::Plugin
@@ -21,7 +20,7 @@ class Robut::Plugin::IronSpam
       iw_client = IronWorkerNG::Client.new(:token => ENV["IRON_TOKEN"], :project_id => ENV['IRON_PROJECT_ID'])
       ic_client = IronCache::Client.new(:token => ENV["IRON_TOKEN"], :project_id => ENV['IRON_PROJECT_ID'])
 
-      schedule = iw_client.schedules.create('MailerWorker', 
+      schedule = iw_client.schedules.create('MailerWorker',
                                 {:mailer => mailer_settings, :to => email},
                                 {:run_every => 60, :start_at => Time.now})
       @cache = ic_client.cache("spam_schedules")
