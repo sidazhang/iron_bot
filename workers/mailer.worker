@@ -1,0 +1,17 @@
+# define the runtime language, this can be ruby, java, node, php, go, etc.
+runtime "ruby"
+name "MailerWorker"
+full_remote_build(true)
+
+#merge gem
+gem "actionmailer"
+
+
+#merge erb file to a specific folder
+file "../bot_mailer/spam.html"  , "bot_mailer"
+ 
+ # merge mailer
+file "../bot_mailer/bot_mailer.rb"
+
+# exec is the file that will be executed:
+exec "mailer_worker.rb"

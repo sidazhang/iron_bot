@@ -12,7 +12,6 @@ Robut::Plugin.plugins << Robut::Plugin::Ping
 Robut::Plugin.plugins << Robut::Plugin::Help
 
 Dir[File.expand_path('../plugins/*.rb', __FILE__)].each do |plugin|
-  puts plugin
   require plugin
 end
 
