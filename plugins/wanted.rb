@@ -20,4 +20,6 @@ class Robut::Plugin::Wanted
     end
   end
 
+  Robut::Plugin.plugins << self
+
 end

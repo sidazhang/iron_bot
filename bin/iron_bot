@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../iron_bot', __FILE__)
+
+puts "Starting Iron Bot"
+trap("INT"){ puts "bye bye." }
+Robut::Connection.new.connect
+loop { sleep 1 }
